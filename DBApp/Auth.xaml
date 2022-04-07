@@ -1,0 +1,20 @@
+﻿<Window x:Class="DBApp.Auth"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:DBApp"
+        mc:Ignorable="d"
+        Title="Auth" SizeToContent="WidthAndHeight">
+    <Grid>
+        <ComboBox Name="AuthType" SelectionChanged="Selector_OnSelectionChanged" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" >
+            <ComboBoxItem Name="Windows_Auth" Content="Проверка подлинности Windows"/>
+            <ComboBoxItem Name="SQL_Auth" Content="Проверка подлинности SQL" />
+        </ComboBox>
+        <TextBox Name="LoginText" Visibility="Collapsed" HorizontalAlignment="Left" Margin="44,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Height="26"/>
+        <Label Name="Login" Visibility="Collapsed" Content="Логин" HorizontalAlignment="Left" Margin="0,22,0,0" VerticalAlignment="Top"/>
+        <Label Name="PasswordText" Visibility="Collapsed" Content="Пароль" HorizontalAlignment="Left" Margin="0,48,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="Password" Visibility="Collapsed" HorizontalAlignment="Left" Margin="56,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144" Height="26"/>
+        <Button Content="Войти" Name="LogIn" Click="LogIn_OnClick" HorizontalAlignment="Center" Margin="0,74,0,0" VerticalAlignment="Top" Width="200"/>
+    </Grid>
+</Window>

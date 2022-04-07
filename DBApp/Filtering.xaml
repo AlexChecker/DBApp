@@ -1,0 +1,33 @@
+﻿<Window x:Class="DBApp.Filtering"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:DBApp"
+        xmlns:wptk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Filtering" SizeToContent="WidthAndHeight">
+
+    <StackPanel>
+        <Label Content="Сортировать по столбцу" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <ComboBox SelectionChanged="Columns_OnSelectionChanged" MouseEnter="Columns_OnMouseEnter" Name="Columns" Width="345" HorizontalAlignment="Left"/>
+        <GroupBox Header="Режим фильтрации" Width="345" HorizontalAlignment="Left"
+                  Height="auto">
+            <StackPanel>
+                <RadioButton Name="DoNotSort" GroupName="Sort" IsChecked="True" Content="Не сортировать"/>
+                <RadioButton Name="SortAscending" GroupName="Sort"  Content="Сортировать по возрастанию" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <RadioButton Name="SortDescending" GroupName="Sort" Content="Сортировать по убыванию"/>
+                <RadioButton Name="IncludeString" Click="IncludeString_OnClick" GroupName="Filter" Visibility="Collapsed" Content="По наличию строки"/>
+                <RadioButton Name="ExcludeString" Click="IncludeString_OnClick" GroupName="Filter" Visibility="Collapsed" Content="По отсутствию строки"/>
+                <RadioButton Name="NumberGreater" Click="NumberGreater_OnClick" GroupName="Filter" Visibility="Collapsed" Content="Значение больше чем"/>
+                <RadioButton Name="NumberSmaller" Click="NumberGreater_OnClick" GroupName="Filter" Visibility="Collapsed" Content="Значение меньше чем"/>
+                <RadioButton Name="NotEqual" Click="NumberGreater_OnClick" GroupName="Filter" Visibility="Collapsed" Content="Значение равно"/>
+                <RadioButton Name="Equal" Click="NumberGreater_OnClick" Content="Равно" Visibility="Collapsed" GroupName="Filter" />
+                <RadioButton Name="isNull" GroupName="Filter" Content="Значение равно null"/>
+            </StackPanel>
+        </GroupBox>
+        <wptk:WatermarkTextBox Visibility="Collapsed" Watermark="Введите строку для фильтрации" Name="StringFilterBox" />
+        <wptk:WatermarkTextBox Visibility="Collapsed" Watermark="Введите числовое значение для поиска" Name="NumberFilterBox"/>
+        <Button Click="ApplyFilter_OnClick" Content="Применить фильтр" Name="ApplyFilter" />
+    </StackPanel>
+</Window>

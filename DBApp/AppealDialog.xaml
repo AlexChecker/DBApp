@@ -1,0 +1,16 @@
+﻿<Window x:Class="DBApp.AppealDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:DBApp"
+        mc:Ignorable="d"
+        Title="AppealDialog" Height="368" Width="300" ResizeMode="NoResize">
+    <StackPanel>
+        <TextBlock Name="Appeal_Number"/>
+        <TextBox Name="Appeal_Description" Height="250" IsReadOnly="True"/>
+        <ComboBox Name="Status"/>
+        <ComboBox Name="Section" MouseEnter="Section_OnMouseEnter" />
+        <Button Name="Accept" Height="20" Content="Применить изменения" Click="Accept_OnClick"/>
+    </StackPanel>
+</Window>

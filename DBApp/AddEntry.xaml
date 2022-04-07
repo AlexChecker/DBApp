@@ -1,0 +1,13 @@
+﻿<Window x:Class="DBApp.AddEntry"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:DBApp"
+        xmlns:wptk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="AddEntry" SizeToContent="WidthAndHeight">
+    <StackPanel Name="Grid">
+        <Button VerticalAlignment="Bottom" Name="Accept" Content="Добавить!" Click="Accept_OnClick"/>
+    </StackPanel>
+</Window>

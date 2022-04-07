@@ -1,0 +1,39 @@
+﻿<Window x:Class="DBApp.MainInterfaceEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DBApp"
+        
+        Title="MainInterfaceEmployee" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Button Content="Выйти из системы" Click="LogOff_OnClick" Name="LogOff" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <Label Content="Вы вошли как: " Name="username_label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <GroupBox  Name="AppealsInProgress" Margin="0,25,600,0" Header="Открытые обращения">
+            <DataGrid  Name="Appeals" IsReadOnly="True">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
+        </GroupBox>
+        <GroupBox Header="Табельное оружие"  Margin="200,25,400,0">
+            <DataGrid Name="ServiceWeapon" IsReadOnly="True">
+            </DataGrid>
+        </GroupBox>
+        <GroupBox Header="Отдел, звание и должность" Margin="400,25,200,0">
+            <DataGrid Name="Department_Post_Run" AutoGenerateColumns="True" IsReadOnly="True">
+            </DataGrid>
+        </GroupBox>
+        <GroupBox Header="Дела" Margin="600,25,0,0">
+            <DataGrid Name="Investigations" AutoGenerateColumns="True" IsReadOnly="True">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick2"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
+        </GroupBox>
+    </Grid>
+</Window>
