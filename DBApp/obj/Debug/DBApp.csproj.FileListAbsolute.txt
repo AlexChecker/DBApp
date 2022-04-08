@@ -54,3 +54,5 @@ C:\Users\rooth\source\repos\DBApp\DBApp\obj\Debug\AddEntry.g.cs
 C:\Users\rooth\source\repos\DBApp\DBApp\obj\Debug\AddEntry.baml
 C:\Users\rooth\source\repos\DBApp\DBApp\obj\Debug\EditEntry.g.cs
 C:\Users\rooth\source\repos\DBApp\DBApp\obj\Debug\EditEntry.baml
+C:\Users\rooth\source\repos\DBApp\DBApp\obj\Debug\PleaseWaitDialog.g.cs
+C:\Users\rooth\source\repos\DBApp\DBApp\obj\Debug\PleaseWaitDialog.baml

@@ -332,6 +332,10 @@ namespace DBApp
           }
           else
           {
+            //utils.queryAsync($@"", (dt) =>
+            //{
+            //  
+            //});
             DataTable dt =
               utils.StraightQuery($@"select Email_Adress_Citizen from Citizen where ID_Citizen={user.id}");
             init((string) dt.DefaultView[0][0], user).GetAwaiter();

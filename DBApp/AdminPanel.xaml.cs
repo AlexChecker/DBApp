@@ -20,12 +20,32 @@ namespace DBApp
         {
             if (!filled)
             {
-                DataTable dt = utils.StraightQuery($@"select name from SYSOBJECTS where xtype='U' order by name ASC");
-            for (int i = 0; i < dt.DefaultView.Count; i++)
-                {
-                    Tables.Items.Add(dt.DefaultView[i][0]);
-                }
-
+                //DataTable dt = utils.StraightQuery($@"select name from SYSOBJECTS where xtype='U' order by name ASC");
+              //  utils.queryAsync($@"", (dt) =>
+              //  {
+              //for (int i = 0; i < dt.DefaultView.Count; i++)
+              //    {
+              //        Tables.Items.Add(dt.DefaultView[i][0]);
+              //    }
+              //  });
+              utils.queryAsync($@"select name from SYSOBJECTS where xtype='U' order by name ASC", (dt) =>
+              { 
+                  Application.Current.Dispatcher.Invoke(() =>
+                  {
+                      for (int i = 0; i < dt.DefaultView.Count; i++)
+                      {
+                          if((string) dt.DefaultView[i][0]!="sysdiagrams")
+                            Tables.Items.Add(dt.DefaultView[i][0]);
+                      }
+                  });
+              });
+              //utils.queryAsync($@"", (dt) =>
+              //{ 
+              //    Application.Current.Dispatcher.Invoke(() =>
+              //    {
+              //        
+              //    });
+              //});
                 filled = true;
             }
         }
@@ -43,10 +63,171 @@ namespace DBApp
         {
                         if (filled)
                         {
+                            //MessageBox.Show(utils.connection.State.ToString());
                             string table_name = (string) Tables.Items[Tables.SelectedIndex];
-                            DataTable dt = utils.StraightQuery($@"select * from [dbo].[{table_name}]");
-                            Table.AutoGenerateColumns = true;
-                            Table.ItemsSource = dt.DefaultView;
+                            utils.queryAsync($@"select * from [dbo].[{table_name}]", (dt) =>
+                            { 
+                                Application.Current.Dispatcher.Invoke(() =>
+                                {
+                                    foreach (DataColumn column in dt.Columns)
+                                    {
+                                        switch (column.ColumnName)
+                                        {
+                                            case "ID_Appeal":
+                                                column.ColumnName = "ID обращения";
+                                                break;
+                                            case "Appeal_Number":
+                                                column.ColumnName = "Номер обращения";
+                                                break;
+                                            case "Appeal_Date_Time":
+                                                column.ColumnName = "Дата и время подачи обращения";
+                                                break;
+                                            case "Appeal_Description":
+                                                column.ColumnName = "Описание обращения";
+                                                break;
+                                            case "Citizen_ID":
+                                                column.ColumnName = "ID гражданина";
+                                                break;
+                                            case "Status_ID":
+                                                column.ColumnName = "ID статуса";
+                                                break;
+                                            case "Employee_ID":
+                                                column.ColumnName = "ID сотрудника";
+                                                break;
+                                            case "ID_Citizen":
+                                                column.ColumnName = "ID гражданина";
+                                                break;
+                                            case "Passport_Series_Citizen":
+                                                column.ColumnName = "Серия паспорта гражданина";
+                                                break;
+                                            case "Birth_Day_Citizen":
+                                                column.ColumnName = "Дата рождения гражданина";
+                                                break;
+                                            case "Date_Of_Issue":
+                                                column.ColumnName = "Дата выдачи паспорта";
+                                                break;
+                                            case "Division_Code_Citizen":
+                                                column.ColumnName = "Код подразделения";
+                                                break;
+                                            case "Issued_By_Citizen":
+                                                column.ColumnName = "Паспорт выдан";
+                                                break;
+                                            case "Registration_Adress_Citizen":
+                                                column.ColumnName = "Адрес регистрации гражданина";
+                                                break;
+                                            case "First_Name_Citizen":
+                                                column.ColumnName = "Имя гражданина";
+                                                break;
+                                            case "Second_Name_Citizen":
+                                                column.ColumnName = "Фамилия гражданина";
+                                                break;
+                                            case "Middle_Name_Citizen":
+                                                column.ColumnName = "Отчество гражданина";
+                                                break;
+                                            case "Residential_Adress_Citizen":
+                                                column.ColumnName = "Адрес проживания";
+                                                break;
+                                            case "Email_Adress_Citizen":
+                                                column.ColumnName = "Адрес электронной почты";
+                                                break;
+                                            case "Citizen_Login":
+                                                column.ColumnName = "Логин гражданина";
+                                                break;
+                                            case "Citizen_Password":
+                                                column.ColumnName = "Пароль гражданина";
+                                                break;
+                                            case "ID_Department":
+                                                column.ColumnName = "ID отдела";
+                                                break;
+                                            case "Name_Department":
+                                                column.ColumnName = "Название отдела";
+                                                break;
+                                            case "ID_Status":
+                                                column.ColumnName = "ID статуса";
+                                                break;
+                                            case "Name_Status":
+                                                column.ColumnName = "Название статуса";
+                                                break;
+                                            case "ID_Post":
+                                                column.ColumnName = "ID Должности";
+                                                break;
+                                            case "Name_Post":
+                                                column.ColumnName = "Название должности";
+                                                break;
+                                            case "ID_Rank":
+                                                column.ColumnName = "ID звание";
+                                                break;
+                                            case "Name_Rank":
+                                                column.ColumnName = "Название звания";
+                                                break;
+                                            case "ID_Work_Schedule":
+                                                column.ColumnName = "ID Раписания работы";
+                                                break;
+                                            case "Work_Schedule_Description":
+                                                column.ColumnName = "Описание расписания работы";
+                                                break;
+                                            case "ID_Section":
+                                                column.ColumnName = "ID статьи";
+                                                break;
+                                            case "Section_Name":
+                                                column.ColumnName = "Номер статьи";
+                                                break;
+                                            case "Section_Description":
+                                                column.ColumnName = "Описание статьи";
+                                                break;
+                                            case "ID_Service_Weapon_Type":
+                                                column.ColumnName = "ID типа табельного оружия";
+                                                break;
+                                            case "Service_Weapon_Type_Name":
+                                                column.ColumnName = "Название типа табельного оружия";
+                                                break;
+                                            case "ID_Employee":
+                                                column.ColumnName = "ID сотрудника";
+                                                break;
+                                            case "Employee_Service_Number":
+                                                column.ColumnName = "Табельный номер сотрудника";
+                                                break;
+                                            case "Employee_First_Name":
+                                                column.ColumnName = "Имя сотрудника";
+                                                break;
+                                            case "Employee_Second_Name":
+                                                column.ColumnName = "Фамилия сотрудника";
+                                                break;
+                                            case "Employee_Middle_Name":
+                                                column.ColumnName = "Отчество сотрудника";
+                                                break;
+                                            case "Employee_Personal_File_Number":
+                                                column.ColumnName = "Номер личного дела";
+                                                break;
+                                            case "Employee_Date_Of_Admission":
+                                                column.ColumnName = "Дата приёма на работу";
+                                                break;
+                                            case "Employee_Login":
+                                                column.ColumnName = "Логин сотрудника";
+                                                break;
+                                            case "Employee_Password":
+                                                column.ColumnName = "Пароль сотрудника";
+                                                break;
+                                            case "Department_ID":
+                                                column.ColumnName = "ID отдела";
+                                                break;
+                                            case "Post_ID":
+                                                column.ColumnName = "ID должности";
+                                                break;
+                                            case "Rank_ID":
+                                                column.ColumnName = "ID звания";
+                                                break;
+                                            case "Work_Schedule_ID":
+                                                column.ColumnName = "ID расписания работы";
+                                                break;
+                                        }
+                                    }
+                                    Table.AutoGenerateColumns = true;
+                              Table.ItemsSource = dt.DefaultView;
+                                });
+                            });
+                            //DataTable dt = utils.StraightQuery($");
+                            
                         }
         }
 
@@ -96,7 +277,11 @@ namespace DBApp
             {
                 //MessageBox.Show(((DataRowView) Table.SelectedItems[0]).Row[0].ToString());
                 int id = (int) ((DataRowView) Table.SelectedItems[0]).Row[0];
-                utils.StraightQuery($@"delete from {(string) Tables.Items[Tables.SelectedIndex]} where {(string)Table.Columns[0].Header}={id}");
+                utils.queryAsync($@"delete from {(string) Tables.Items[Tables.SelectedIndex]} where {(string)Table.Columns[0].Header}={id}", (dt) =>
+                { 
+
+                });
+                //utils.StraightQuery($@"");
                 update();
             }
         }
@@ -126,7 +311,11 @@ namespace DBApp
                 case "int":
                     if (int.TryParse(edit.Editable.Text, out int a) && a > 0)
                     {
-                        utils.StraightQuery($"update {Tables.Items[Tables.SelectedIndex]} set {names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}={edit.Editable.Text} where {names.DefaultView[0][0]}={Table.SelectedIndex+1}");
+                        utils.queryAsync($@"update {Tables.Items[Tables.SelectedIndex]} set {names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}={edit.Editable.Text} where {names.DefaultView[0][0]}={Table.SelectedIndex+1}", (dt) =>
+                        { 
+
+                        });
+                        //utils.StraightQuery($"");
                     }
                     else
                     {
@@ -138,7 +327,11 @@ namespace DBApp
                     case "date":
                     if (DateTime.TryParse(edit.Editable.Text, out DateTime b))
                     {
-                        utils.StraightQuery($"update {Tables.Items[Tables.SelectedIndex]} set {names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}='{edit.Editable.Text}' where {names.DefaultView[0][0]}={Table.SelectedIndex+1}");
+                        utils.queryAsync($@"update {Tables.Items[Tables.SelectedIndex]} set {names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}='{edit.Editable.Text}' where {names.DefaultView[0][0]}={Table.SelectedIndex+1}", (dt) =>
+                        { 
+
+                        });
+                        //utils.StraightQuery($"");
                     }
                     else
                     {
@@ -150,8 +343,10 @@ namespace DBApp
                     DataTable lengths = utils.StraightQuery($@"select CHARACTER_MAXIMUM_LENGTH from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '{Tables.Items[Tables.SelectedIndex]}' and COLUMN_NAME='{names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}'");
                     if ((int) lengths.DefaultView[0][0] > edit.Editable.Text.Length)
                     {
-                        utils.StraightQuery(
-                            $"update {Tables.Items[Tables.SelectedIndex]} set {names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}='{edit.Editable.Text}' where {names.DefaultView[0][0]}={Table.SelectedIndex + 1}");
+                        utils.queryAsync($@"update {Tables.Items[Tables.SelectedIndex]} set {names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}='{edit.Editable.Text}' where {names.DefaultView[0][0]}={Table.SelectedIndex + 1}", (dt) =>
+                        { 
+
+                        });
 
                     }
                     else

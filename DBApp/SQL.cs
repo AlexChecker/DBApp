@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data.Common;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows;
 
 namespace DBApp
@@ -56,10 +57,39 @@ namespace DBApp
                 return false;
             }
         }
+
+        public void queryAsync(string query, Action<DataTable> act)
+        {
+            Thread th = new Thread(() =>
+            {
+                try
+                {
+                    while (connection.State == ConnectionState.Open)
+                    {
+                        //utils.connection.
+                        Application.Current.Dispatcher.Invoke(() =>
+                            {
+                                PleaseWaitDialog pw = new PleaseWaitDialog(connection);
+                                pw.ShowDialog();
+                            }
+                        );
+                    }
+                    var dt = StraightQuery(query);
+                    act.Invoke(dt);
+                }
+                catch (Exception ee)
+                {
+                    MessageBox.Show(connection.State.ToString());
+                    MessageBox.Show(ee.Message);
+                }
+            });
+            th.Start();
+        }
         public DataTable StraightQuery(string query)
         {
             DataTable result = new DataTable();
             connection.Open();
+            //var t = connection.OpenAsync()
             SqlCommand cmd = new SqlCommand(query, connection);
             result.Load(cmd.ExecuteReader());
             connection.Close();

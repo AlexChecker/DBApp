@@ -52,10 +52,10 @@ namespace DBApp
         {
             dataset.Tables.Clear();
             dataset.Tables.Add(utils.StraightQuery($@"select Appeal_Number, Appeal_Description, Section_Name, Name_Status from dbo.Appeal
-left join Appeal_Composition on Appeal_ID = ID_Appeal
-left join dbo.section on Section_ID = ID_Section
-left join dbo.Status on Status_ID=ID_Status
-where Employee_ID ={user.id}"));
+                                                                                      left join Appeal_Composition on Appeal_ID = ID_Appeal
+                                                                                      left join dbo.section on Section_ID = ID_Section
+                                                                                      left join dbo.Status on Status_ID=ID_Status
+                                                                                      where Employee_ID ={user.id}"));
             Appeals.AutoGenerateColumns = true;
             dataset.Tables[0].Columns[0].ColumnName = "Номер обращения";
             dataset.Tables[0].Columns[1].ColumnName = "Описание обращения";
