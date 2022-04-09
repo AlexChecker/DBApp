@@ -7,8 +7,68 @@
         mc:Ignorable="d"
         Title="MainInterfaceCitizen" Height="450" Width="800" ResizeMode="NoResize" >
     <Grid>
-        <Button Content="Новое обращение" Click="NewAppeal_OnClick" Name="NewAppeal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,102,0"/>
-        <Button Content="Выйти из системы" Click="LogOff_OnClick" Name="LogOff" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <Button Width="120" Content="Новое обращение" Click="NewAppeal_OnClick" Name="NewAppeal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,102,0">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                                        <DoubleAnimation Duration="0:0:0.550" To="100"
+                                                     
+                                                         Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.250" To="1" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                                        <DoubleAnimation Duration="0:0:0.550" To="120" 
+                                                         Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Width="110" Content="Выйти из системы" Click="LogOff_OnClick" Name="LogOff" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                                        <DoubleAnimation Duration="0:0:0.550" To="100"
+                                                     
+                                                         Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.250" To="1" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                                        <DoubleAnimation Duration="0:0:0.550" To="110" 
+                                                         Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <Label Content="Вы вошли как: " Name="username_label" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <GroupBox Name="Appeals_active_or_on_watch" Margin="0,25,600,0" Header="Активные обращения" >
             <DataGrid Name="Appeals" IsReadOnly="True" AutoGenerateColumns="True">

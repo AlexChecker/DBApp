@@ -33,7 +33,36 @@
         <CheckBox Unchecked="Verify_OnUnchecked" Content="Использовать двухфакторную аутентификацию?" HorizontalAlignment="Left" Margin="0,364,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" IsChecked="False" Name="Verify"/>
         <Label Visibility="Collapsed" Name="Email_Label" Content="Электронная почта"  HorizontalAlignment="Left" Margin="0,379,0,0" VerticalAlignment="Top"/>
         <TextBox Visibility="Collapsed" Name="Email" HorizontalAlignment="Left" Margin="237,379,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
-        <Button VerticalAlignment="Bottom" Height="20" Name="Accept" Click="Accept_OnClick" Content="Подтвердить!" Margin="0,402,0,0" />
+        <Button VerticalAlignment="Bottom" Height="20" Name="Accept" Click="Accept_OnClick" Content="Подтвердить!" Margin="0,402,0,0" Width="440" >        <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                                        <DoubleAnimation Duration="0:0:0.550" To="100"
+                                                     
+                                                         Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.250" To="1" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                                        <DoubleAnimation Duration="0:0:0.550" To="440" 
+                                                         Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <Label Content="Адрес регистрации" HorizontalAlignment="Left" Margin="0,234,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" x:Name="Registration_Address" Margin="237,238,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="0,312,0,0" VerticalAlignment="Top"/>

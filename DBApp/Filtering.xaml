@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:DBApp"
         xmlns:wptk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Filtering" SizeToContent="WidthAndHeight">
+        Title="Filtering" SizeToContent="WidthAndHeight" Loaded="Filtering_OnLoaded">
 
     <StackPanel>
         <Label Content="Сортировать по столбцу" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <ComboBox SelectionChanged="Columns_OnSelectionChanged" MouseEnter="Columns_OnMouseEnter" Name="Columns" Width="345" HorizontalAlignment="Left"/>
-        <GroupBox Header="Режим фильтрации" Width="345" HorizontalAlignment="Left"
+        <GroupBox Name="Box" Header="Режим фильтрации" Width="345" HorizontalAlignment="Left"
                   Height="auto">
             <StackPanel>
                 <RadioButton Name="DoNotSort" GroupName="Sort" IsChecked="True" Content="Не сортировать"/>
@@ -28,6 +28,35 @@
         </GroupBox>
         <wptk:WatermarkTextBox Visibility="Collapsed" Watermark="Введите строку для фильтрации" Name="StringFilterBox" />
         <wptk:WatermarkTextBox Visibility="Collapsed" Watermark="Введите числовое значение для поиска" Name="NumberFilterBox"/>
-        <Button Click="ApplyFilter_OnClick" Content="Применить фильтр" Name="ApplyFilter" />
+        <Button Click="ApplyFilter_OnClick" Width="345" Content="Применить фильтр" Name="ApplyFilter" >        <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                                        <DoubleAnimation Duration="0:0:0.550" To="100"
+                                                     
+                                                         Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.250" To="1" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                                        <DoubleAnimation Duration="0:0:0.550" To="345" 
+                                                         Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </StackPanel>
 </Window>

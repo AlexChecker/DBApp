@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:DBApp"
         mc:Ignorable="d"
-        Title="Auth" SizeToContent="WidthAndHeight">
+        Title="Auth" SizeToContent="WidthAndHeight" Loaded="Auth_OnLoaded">
     <Grid>
         <ComboBox Name="AuthType" SelectionChanged="Selector_OnSelectionChanged" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" >
             <ComboBoxItem Name="Windows_Auth" Content="Проверка подлинности Windows"/>

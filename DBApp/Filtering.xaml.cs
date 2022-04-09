@@ -1,7 +1,9 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 
 namespace DBApp
 {
@@ -137,6 +139,15 @@ namespace DBApp
         {
             StringFilterBox.Visibility = Visibility.Collapsed;
             NumberFilterBox.Visibility = Visibility.Visible;
+        }
+
+        private void Filtering_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            DoubleAnimation da = new DoubleAnimation();
+            da.From = 0;
+            da.To = 345;
+            da.Duration = TimeSpan.FromSeconds(3);
+            Box.BeginAnimation(GroupBox.WidthProperty,da);
         }
     }
 }

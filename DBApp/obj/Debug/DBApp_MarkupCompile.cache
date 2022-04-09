@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\rooth\source\repos\DBApp\DBApp\App.xaml
-131469026821
+141879445500
 
-18-367977004
+19319381391
 18-990232233
-AddEntry.xaml;AdminPanel.xaml;AppealDialog.xaml;Appeal_Edit_Or_Create.xaml;Auth.xaml;EditEntry.xaml;Filtering.xaml;MainInterfaceCitizen.xaml;MainInterfaceEmployee.xaml;MainWindow.xaml;PleaseWaitDialog.xaml;RegistrationWindow.xaml;TwoFactorAuth.xaml;
+ActivationWindow.xaml;AddEntry.xaml;AdminPanel.xaml;AppealDialog.xaml;Appeal_Edit_Or_Create.xaml;Auth.xaml;EditEntry.xaml;Filtering.xaml;MainInterfaceCitizen.xaml;MainInterfaceEmployee.xaml;MainWindow.xaml;PleaseWaitDialog.xaml;RegistrationWindow.xaml;TwoFactorAuth.xaml;
 
 False
 

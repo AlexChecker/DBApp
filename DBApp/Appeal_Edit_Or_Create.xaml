@@ -10,6 +10,35 @@
         <TextBlock Name="Appeal_Number"/>
         <TextBox MaxLength="500" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" Name="Appeal_Description" Height="250" />
         <ComboBox Name="Departments" SelectedIndex="0" MouseEnter="Departments_OnMouseEnter"/>
-        <Button Name="Accept" Height="20" Content="Применить изменения" Click="Accept_OnClick"/>
+        <Button Name="Accept" Height="20" Content="Применить изменения" Click="Accept_OnClick">        <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                                        <DoubleAnimation Duration="0:0:0.550" To="100"
+                                                     
+                                                         Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Duration="0:0:0.250" To="1" 
+                                                            Storyboard.TargetProperty="BorderThickness" />
+                                        <DoubleAnimation Duration="0:0:0.550" To="300" 
+                                                         Storyboard.TargetProperty="Width" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </StackPanel>
 </Window>

@@ -1,0 +1,75 @@
+﻿<Window x:Class="DBApp.ActivationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:DBApp"
+        mc:Ignorable="d"
+        Title="ActivationWindow" SizeToContent="Height" Width="600">
+    <StackPanel>
+        <Label Content="Пожалуйста, введите лицензионный ключ, или воспользуйтесь бесплатной 30-дневной пробной версией"/>
+        <TextBox Name="LicenseKey"/>
+        <Button Height="20" Width="600" Name="Activate" Content="Активировать!" Click="Activate_OnClick">
+        <Button.Style>
+            <Style TargetType="Button">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                        Storyboard.TargetProperty="BorderThickness" />
+                                    <DoubleAnimation Duration="0:0:0.550" To="100"
+                                                     
+                                                     Storyboard.TargetProperty="Width" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation Duration="0:0:0.250" To="1" 
+                                                        Storyboard.TargetProperty="BorderThickness" />
+                                    <DoubleAnimation Duration="0:0:0.550" To="600" 
+                                                     Storyboard.TargetProperty="Width" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Button.Style>
+        </Button>
+        <Button Height="20" Width="600" Name="Trial" Content="Триальная версия" Click="Trial_OnClick">
+        <Button.Style>
+            <Style TargetType="Button">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation Duration="0:0:0.250" To="0" 
+                                                        Storyboard.TargetProperty="BorderThickness" />
+                                    <DoubleAnimation Duration="0:0:0.550" To="100"
+                                                     
+                                                     Storyboard.TargetProperty="Width" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ThicknessAnimation Duration="0:0:0.250" To="1" 
+                                                        Storyboard.TargetProperty="BorderThickness" />
+                                    <DoubleAnimation Duration="0:0:0.550" To="600" 
+                                                     Storyboard.TargetProperty="Width" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Button.Style>
+        </Button>
+    </StackPanel>
+</Window>

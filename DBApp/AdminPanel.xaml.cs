@@ -100,6 +100,9 @@ namespace DBApp
                                             case "Passport_Series_Citizen":
                                                 column.ColumnName = "Серия паспорта гражданина";
                                                 break;
+                                            case "Passport_Number_Citizen":
+                                                column.ColumnName = "Номер паспорта гражданина";
+                                                break;
                                             case "Birth_Day_Citizen":
                                                 column.ColumnName = "Дата рождения гражданина";
                                                 break;
@@ -108,6 +111,9 @@ namespace DBApp
                                                 break;
                                             case "Division_Code_Citizen":
                                                 column.ColumnName = "Код подразделения";
+                                                break;
+                                            case "Phone_Number_Citizen":
+                                                column.ColumnName = "Номер телефона";
                                                 break;
                                             case "Issued_By_Citizen":
                                                 column.ColumnName = "Паспорт выдан";
@@ -219,6 +225,51 @@ namespace DBApp
                                                 break;
                                             case "Work_Schedule_ID":
                                                 column.ColumnName = "ID расписания работы";
+                                                break;
+                                            case "ID_Service_Weapon_Number":
+                                                column.ColumnName = "ID Номера табельного оружия";
+                                                break;
+                                            case "Service_Number":
+                                                column.ColumnName = "Табельный номер";
+                                                break;
+                                            case "ID_Case":
+                                                column.ColumnName = "ID дела";
+                                                break;
+                                            case "Case_Number":
+                                                column.ColumnName = "Номер дела";
+                                                break;
+                                            case "Appeal_ID":
+                                                column.ColumnName = "ID обращения";
+                                                break;
+                                            case "ID_Investigation_Report":
+                                                column.ColumnName = "ID отчёта о расследовании";
+                                                break;
+                                            case "Investigation_Report_Number":
+                                                column.ColumnName = "Номер отчёта";
+                                                break;
+                                            case "Investigation_Report_Facts":
+                                                column.ColumnName = "Выявленные факты";
+                                                break;
+                                            case "Investigation_Beginning_Date":
+                                                column.ColumnName = "Дата начала расследования";
+                                                break;
+                                            case "Investigation_Ending_Date":
+                                                column.ColumnName = "Дата окончания расследования";
+                                                break;
+                                            case "Case_ID":
+                                                column.ColumnName = "ID дела";
+                                                break;
+                                            case "ID_Composition":
+                                                column.ColumnName = "ID состава обращения";
+                                                break;
+                                            case "Section_ID":
+                                                column.ColumnName = "ID дела";
+                                                break;
+                                            case "ID_Posession":
+                                                column.ColumnName = "ID владения табельным оружием";
+                                                break;
+                                            case "Service_Weapon_Type_ID":
+                                                column.ColumnName = "ID типа табельного оружия";
                                                 break;
                                         }
                                     }
