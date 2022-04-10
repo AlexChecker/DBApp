@@ -58,3 +58,9 @@ C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\DBApp.csproj.CoreCompileInpu
 C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\DBApp.csproj.CopyComplete
 C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\DBApp.exe
 C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\DBApp.pdb
+C:\Users\rooth\source\repos\DBApp\DBApp\bin\Release\WpfAnimatedGif.dll
+C:\Users\rooth\source\repos\DBApp\DBApp\bin\Release\WpfAnimatedGif.pdb
+C:\Users\rooth\source\repos\DBApp\DBApp\bin\Release\WpfAnimatedGif.xml
+C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\PreLaunch.g.cs
+C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\DBApp_Content.g.cs
+C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\PreLaunch.baml

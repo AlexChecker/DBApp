@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,7 +11,7 @@ namespace DBApp
     {
         public SQL utils;
         private bool filled = false;
-        
+        private List<string> TableNames = new List<string>();
         public AdminPanel()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace DBApp
               //  {
               //for (int i = 0; i < dt.DefaultView.Count; i++)
               //    {
-              //        Tables.Items.Add(dt.DefaultView[i][0]);
+              //        TableNames.Add(dt.DefaultView[i][0]);
               //    }
               //  });
               utils.queryAsync($@"select name from SYSOBJECTS where xtype='U' order by name ASC", (dt) =>
@@ -34,8 +35,74 @@ namespace DBApp
                   {
                       for (int i = 0; i < dt.DefaultView.Count; i++)
                       {
-                          if((string) dt.DefaultView[i][0]!="sysdiagrams")
-                            Tables.Items.Add(dt.DefaultView[i][0]);
+                          if ((string) dt.DefaultView[i][0] != "sysdiagrams")
+                          {
+                              
+                            TableNames.Add((string)dt.DefaultView[i][0]);
+                          //Tables.Items.Add(dt.DefaultView[i][0]);
+                          switch ((string) dt.DefaultView[i][0])
+                          {
+                              case "Appeal":
+                                  Tables.Items.Add("Обращения");
+                                  break;
+                              case "Appeal_Composition":
+                                  Tables.Items.Add("Состав обращения");
+
+                                  break;
+                              case "Case":
+                                  Tables.Items.Add("Дело");
+
+                                  break;
+                              case "Citizen":
+                                  Tables.Items.Add("Граждане");
+
+                                  break;
+                              case "Department":
+                                  Tables.Items.Add("Отделы");
+
+                                  break;
+                              case "Employee":
+                                  Tables.Items.Add("Сотрудники");
+
+                                  break;
+                              case "Investigation_Report":
+                                  Tables.Items.Add("Отчёты о расследованиях");
+
+                                  break;
+                              case "Post":
+                                  Tables.Items.Add("Должности");
+
+                                  break;
+                              case "Rank":
+                                  Tables.Items.Add("Звания");
+
+                                  break;
+                              case "Section":
+                                  Tables.Items.Add("Статьи");
+
+                                  break;
+                              case "Service_Weapon_Number":
+                                  Tables.Items.Add("Номера табельных оружий");
+
+                                  break;
+                              case "Service_Weapon_Posession":
+                                  Tables.Items.Add("Владения табельными оружиями");
+
+                                  break;
+                              case "Service_Weapon_Type":
+                                  Tables.Items.Add("Типы табельных оружий");
+
+                                  break;
+                              case "Status":
+                                  Tables.Items.Add("Статусы");
+
+                                  break;
+                              case "Work_Schedule":
+                                  Tables.Items.Add("Расписания работы");
+
+                                  break;
+                          }
+                          }
                       }
                   });
               });
@@ -64,7 +131,7 @@ namespace DBApp
                         if (filled)
                         {
                             //MessageBox.Show(utils.connection.State.ToString());
-                            string table_name = (string) Tables.Items[Tables.SelectedIndex];
+                            string table_name = (string) TableNames[Tables.SelectedIndex];
                             utils.queryAsync($@"select * from [dbo].[{table_name}]", (dt) =>
                             { 
                                 Application.Current.Dispatcher.Invoke(() =>
@@ -293,7 +360,7 @@ namespace DBApp
         {
             if (Tables.SelectedIndex > -1)
             {
-                Filtering filtering = new Filtering(utils, (string) Tables.Items[Tables.SelectedIndex]);
+                Filtering filtering = new Filtering(utils, (string) TableNames[Tables.SelectedIndex]);
                 filtering.ShowDialog();
                 if (filtering.finitaLaComedia)
                 {
@@ -309,7 +376,7 @@ namespace DBApp
 
         private void AddEntry_OnClick(object sender, RoutedEventArgs e)
         {
-            AddEntry ad = new AddEntry(utils,(string) Tables.Items[Tables.SelectedIndex]);
+            AddEntry ad = new AddEntry(utils,(string) TableNames[Tables.SelectedIndex]);
             ad.ShowDialog();
             update();
         }
@@ -328,7 +395,7 @@ namespace DBApp
             {
                 //MessageBox.Show(((DataRowView) Table.SelectedItems[0]).Row[0].ToString());
                 int id = (int) ((DataRowView) Table.SelectedItems[0]).Row[0];
-                utils.queryAsync($@"delete from {(string) Tables.Items[Tables.SelectedIndex]} where {(string)Table.Columns[0].Header}={id}", (dt) =>
+                utils.queryAsync($@"delete from {(string) TableNames[Tables.SelectedIndex]} where {(string)Table.Columns[0].Header}={id}", (dt) =>
                 { 
 
                 });
@@ -348,21 +415,21 @@ namespace DBApp
             DataRowView view = (DataRowView)Table.SelectedItem;
             int index = Table.CurrentCell.Column.DisplayIndex;
             string cellvalue = view.Row.ItemArray[index].ToString();
-            EditEntry edit = new EditEntry(utils,(string) Tables.Items[Tables.SelectedIndex],Table.SelectedIndex+1);
+            EditEntry edit = new EditEntry(utils,(string) TableNames[Tables.SelectedIndex],Table.SelectedIndex+1);
             edit.Editable.Text = cellvalue;
             edit.ShowDialog();
-            DataTable names = utils.StraightQuery($@"select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '{Tables.Items[Tables.SelectedIndex]}'");
+            DataTable names = utils.StraightQuery($@"select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '{TableNames[Tables.SelectedIndex]}'");
             MessageBox.Show(names.DefaultView[Table.CurrentColumn.DisplayIndex][0].ToString());
             //return;
             string check =(utils.StraightQuery(
-                    $@"select DATA_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '{Tables.Items[Tables.SelectedIndex]}' and COLUMN_NAME='{names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}' order by COLUMN_NAME ASC")
+                    $@"select DATA_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '{TableNames[Tables.SelectedIndex]}' and COLUMN_NAME='{names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}' order by COLUMN_NAME ASC")
                 as DataTable).DefaultView[0][0].ToString();
             switch (check)
             {
                 case "int":
                     if (int.TryParse(edit.Editable.Text, out int a) && a > 0)
                     {
-                        utils.queryAsync($@"update {Tables.Items[Tables.SelectedIndex]} set {names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}={edit.Editable.Text} where {names.DefaultView[0][0]}={Table.SelectedIndex+1}", (dt) =>
+                        utils.queryAsync($@"update {TableNames[Tables.SelectedIndex]} set {names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}={edit.Editable.Text} where {names.DefaultView[0][0]}={Table.SelectedIndex+1}", (dt) =>
                         { 
 
                         });
@@ -378,7 +445,7 @@ namespace DBApp
                     case "date":
                     if (DateTime.TryParse(edit.Editable.Text, out DateTime b))
                     {
-                        utils.queryAsync($@"update {Tables.Items[Tables.SelectedIndex]} set {names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}='{edit.Editable.Text}' where {names.DefaultView[0][0]}={Table.SelectedIndex+1}", (dt) =>
+                        utils.queryAsync($@"update {TableNames[Tables.SelectedIndex]} set {names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}='{edit.Editable.Text}' where {names.DefaultView[0][0]}={Table.SelectedIndex+1}", (dt) =>
                         { 
 
                         });
@@ -391,10 +458,10 @@ namespace DBApp
                     }
                     break;
                 case "varchar":
-                    DataTable lengths = utils.StraightQuery($@"select CHARACTER_MAXIMUM_LENGTH from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '{Tables.Items[Tables.SelectedIndex]}' and COLUMN_NAME='{names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}'");
+                    DataTable lengths = utils.StraightQuery($@"select CHARACTER_MAXIMUM_LENGTH from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '{TableNames[Tables.SelectedIndex]}' and COLUMN_NAME='{names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}'");
                     if ((int) lengths.DefaultView[0][0] > edit.Editable.Text.Length)
                     {
-                        utils.queryAsync($@"update {Tables.Items[Tables.SelectedIndex]} set {names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}='{edit.Editable.Text}' where {names.DefaultView[0][0]}={Table.SelectedIndex + 1}", (dt) =>
+                        utils.queryAsync($@"update {TableNames[Tables.SelectedIndex]} set {names.DefaultView[Table.CurrentColumn.DisplayIndex][0]}='{edit.Editable.Text}' where {names.DefaultView[0][0]}={Table.SelectedIndex + 1}", (dt) =>
                         { 
 
                         });
