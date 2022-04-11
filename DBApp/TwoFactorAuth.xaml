@@ -8,7 +8,7 @@
         Title="TwoFactorAuth" Height="120" Width="640" ResizeMode="NoResize" >
     <StackPanel>
         <Label Content="Пожалуйста, вставьте код из письма, пришедшего на вашу электронную почту с адреса mvddatabase@gmail.com"/>
-        <TextBox Name="AuthCode"/>
+        <TextBox ToolTip="Введите вашу действительную почту" Name="AuthCode"/>
         <Button Name="Send" Click="Send_OnClick" Content="Отправить письмо" Height="20" Width="640" >        <Button.Style>
                 <Style TargetType="Button">
                     <Style.Triggers>

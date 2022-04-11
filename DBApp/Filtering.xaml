@@ -10,8 +10,8 @@
 
     <StackPanel>
         <Label Content="Сортировать по столбцу" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <ComboBox SelectionChanged="Columns_OnSelectionChanged" MouseEnter="Columns_OnMouseEnter" Name="Columns" Width="345" HorizontalAlignment="Left"/>
-        <GroupBox Name="Box" Header="Режим фильтрации" Width="345" HorizontalAlignment="Left"
+        <ComboBox ToolTip="Выберите столбец для фильтрации" SelectionChanged="Columns_OnSelectionChanged" MouseEnter="Columns_OnMouseEnter" Name="Columns" Width="345" HorizontalAlignment="Left"/>
+        <GroupBox Background="Gray" Name="Box" Header="Режим фильтрации" Width="345" HorizontalAlignment="Left"
                   Height="auto">
             <StackPanel>
                 <RadioButton Name="DoNotSort" GroupName="Sort" IsChecked="True" Content="Не сортировать"/>

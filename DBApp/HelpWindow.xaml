@@ -1,0 +1,20 @@
+﻿<Window x:Class="DBApp.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:DBApp"
+        mc:Ignorable="d"
+        Title="HelpWindow" SizeToContent="Height" Width="400">
+    <Grid>
+        <TextBlock TextWrapping="Wrap" TextAlignment="Center" >
+            Руководство по использованию<LineBreak/>
+            1)Для входа в систему используйте вход через Windows<LineBreak/>
+            2)Если вы новый пользователь, то указывайте действительные данные<LineBreak/>
+            в окне регистрации, иначе вы можете быть лишены доступа в систему<LineBreak/>
+            3)При выборе отдела, в который собираетесь подавать заявление, страйтесь указывать наиболее близкий к вашей проблеме, не тыкайте на первый попавшийся!<LineBreak/>
+            4)Не пытайтесь каким - либо образом сфальсифицировать лицензионный ключ программы, или ваша лицензия пользователя и аккаунт в системе будут удалены<LineBreak/>
+            <Bold>Удобного использования!</Bold>
+        </TextBlock>
+    </Grid>
+</Window>

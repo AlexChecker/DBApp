@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Auth" SizeToContent="WidthAndHeight" Loaded="Auth_OnLoaded">
     <Grid>
-        <ComboBox Name="AuthType" SelectionChanged="Selector_OnSelectionChanged" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" >
+        <ComboBox ToolTip="Выберите метод авторизации. Если вы обычный пользователь, то используйте авторизацию Windows" Name="AuthType" SelectionChanged="Selector_OnSelectionChanged" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" >
             <ComboBoxItem Name="Windows_Auth" Content="Проверка подлинности Windows"/>
             <ComboBoxItem Name="SQL_Auth" Content="Проверка подлинности SQL" />
         </ComboBox>
@@ -16,5 +16,6 @@
         <Label Name="PasswordText" Visibility="Collapsed" Content="Пароль" HorizontalAlignment="Left" Margin="0,48,0,0" VerticalAlignment="Top"/>
         <TextBox Name="Password" Visibility="Collapsed" HorizontalAlignment="Left" Margin="56,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144" Height="26"/>
         <Button Content="Войти" Name="LogIn" Click="LogIn_OnClick" HorizontalAlignment="Center" Margin="0,74,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button Margin="0,94,0,0" Height="20" Content="Справка" Click="ButtonBase_OnClick" />
     </Grid>
 </Window>

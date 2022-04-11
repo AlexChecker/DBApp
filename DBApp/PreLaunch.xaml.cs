@@ -15,6 +15,7 @@ namespace DBApp
             DispatcherTimer tm = new DispatcherTimer();
         private void PreLaunch_OnLoaded(object sender, RoutedEventArgs e)
         {
+            //AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(Logger.HandleException);
             tm.Interval = new TimeSpan(0,0,0,10);
             tm.Tick += launch;
             tm.Start();

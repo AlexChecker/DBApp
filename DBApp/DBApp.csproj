@@ -36,8 +36,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -104,11 +114,18 @@
     <Compile Include="Filtering.xaml.cs">
       <DependentUpon>Filtering.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HelpWindow.xaml.cs">
+      <DependentUpon>HelpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Logger.cs" />
     <Compile Include="MainInterfaceCitizen.xaml.cs">
       <DependentUpon>MainInterfaceCitizen.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainInterfaceEmployee.xaml.cs">
       <DependentUpon>MainInterfaceEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Monitor.xaml.cs">
+      <DependentUpon>Monitor.xaml</DependentUpon>
     </Compile>
     <Compile Include="PleaseWaitDialog.xaml.cs">
       <DependentUpon>PleaseWaitDialog.xaml</DependentUpon>
@@ -131,6 +148,7 @@
     <Page Include="Auth.xaml" />
     <Page Include="EditEntry.xaml" />
     <Page Include="Filtering.xaml" />
+    <Page Include="HelpWindow.xaml" />
     <Page Include="MainInterfaceCitizen.xaml" />
     <Page Include="MainInterfaceEmployee.xaml">
       <SubType>Designer</SubType>
@@ -148,6 +166,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Monitor.xaml" />
     <Page Include="PleaseWaitDialog.xaml" />
     <Page Include="PreLaunch.xaml" />
     <Page Include="RegistrationWindow.xaml" />

@@ -64,3 +64,14 @@ C:\Users\rooth\source\repos\DBApp\DBApp\bin\Release\WpfAnimatedGif.xml
 C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\PreLaunch.g.cs
 C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\DBApp_Content.g.cs
 C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\PreLaunch.baml
+C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\HelpWindow.g.cs
+C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\HelpWindow.baml
+C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\App.baml
+C:\Users\rooth\source\repos\DBApp\DBApp\bin\Release\LiveCharts.dll
+C:\Users\rooth\source\repos\DBApp\DBApp\bin\Release\LiveCharts.Wpf.dll
+C:\Users\rooth\source\repos\DBApp\DBApp\bin\Release\LiveCharts.pdb
+C:\Users\rooth\source\repos\DBApp\DBApp\bin\Release\LiveCharts.xml
+C:\Users\rooth\source\repos\DBApp\DBApp\bin\Release\LiveCharts.Wpf.pdb
+C:\Users\rooth\source\repos\DBApp\DBApp\bin\Release\LiveCharts.Wpf.xml
+C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\Monitor.g.cs
+C:\Users\rooth\source\repos\DBApp\DBApp\obj\Release\Monitor.baml

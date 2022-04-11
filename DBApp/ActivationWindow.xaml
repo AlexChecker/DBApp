@@ -8,8 +8,8 @@
         Title="ActivationWindow" SizeToContent="Height" Width="600">
     <StackPanel>
         <Label Content="Пожалуйста, введите лицензионный ключ, или воспользуйтесь бесплатной 30-дневной пробной версией"/>
-        <TextBox Name="LicenseKey"/>
-        <Button Height="20" Width="600" Name="Activate" Content="Активировать!" Click="Activate_OnClick">
+        <TextBox ToolTip="Введите лицензионный ключ сюда" Name="LicenseKey"/>
+        <Button ToolTip="Активировать ключ" Height="20" Width="600" Name="Activate" Content="Активировать!" Click="Activate_OnClick">
         <Button.Style>
             <Style TargetType="Button">
                 <Style.Triggers>
@@ -40,7 +40,7 @@
             </Style>
         </Button.Style>
         </Button>
-        <Button Height="20" Width="600" Name="Trial" Content="Триальная версия" Click="Trial_OnClick">
+        <Button ToolTip="Попробовать бесплатно" Height="20" Width="600" Name="Trial" Content="Триальная версия" Click="Trial_OnClick">
         <Button.Style>
             <Style TargetType="Button">
                 <Style.Triggers>

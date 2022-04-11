@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Win32;
@@ -103,9 +104,11 @@ namespace DBApp
                 else
                 {
                     MessageBox.Show("Неверный лицензионный ключ!");
-                    
+                    Logger._logs.Add($"Program crash at {DateTime.Now} with error Неверный лицензионный ключ");
+                    File.WriteAllLines($"{DateTime.Now}.log",Logger._logs);
                     lkm.DeleteSubKey("MVDAPP");
                     this.Close();
+                    return;
                 }
             }
             else
@@ -120,7 +123,9 @@ namespace DBApp
                         appkey.DeleteValue(Base64Encode("activationKey"));
                         appkey.DeleteValue(Base64Encode("ExpiringDate"));
                         appkey.Close();
-                        lkm.DeleteSubKey("MVDAPP");
+                        lkm.DeleteSubKey("MVDAPP");                    
+                        Logger._logs.Add($"Program crash at {DateTime.Now} with error Попытка фальификации лицензионного ключа");
+                        File.WriteAllLines($"{DateTime.Now}.log",Logger._logs);
                         this.Close();
                         return;
                     }
@@ -134,6 +139,8 @@ namespace DBApp
                         appkey.DeleteValue(Base64Encode("ExpiringDate"));
                         appkey.Close();
                         lkm.DeleteSubKey("MVDAPP");
+                        Logger._logs.Add($"Program crash at {DateTime.Now} with error Истёк период лицензии");
+                        File.WriteAllLines($"{DateTime.Now}.log",Logger._logs);
                         this.Close();
                         return;
                     }
@@ -146,6 +153,8 @@ namespace DBApp
                         appkey.DeleteValue(Base64Encode("ExpiringDate"));
                         appkey.Close();
                         lkm.DeleteSubKey("MVDAPP");
+                        Logger._logs.Add($"Program crash at {DateTime.Now} with error Повреждённый лицензионный ключ");
+                        File.WriteAllLines($"{DateTime.Now}.log",Logger._logs);
                         this.Close();
                         return;
                     }
@@ -161,6 +170,8 @@ namespace DBApp
                         appkey.DeleteValue(Base64Encode("ExpiringDate"));
                         appkey.Close();
                         lkm.DeleteSubKey("MVDAPP");
+                        Logger._logs.Add($"Program crash at {DateTime.Now} with error Обнаружена попытка фальсификации ключа");
+                        File.WriteAllLines($"{DateTime.Now}.log",Logger._logs);
                         this.Close();
                         return;
                     }
@@ -173,12 +184,20 @@ namespace DBApp
                     appkey.DeleteValue(Base64Encode("ExpiringDate"));
                     appkey.Close();
                     lkm.DeleteSubKey("MVDAPP");
+                    Logger._logs.Add($"Program crash at {DateTime.Now} with error Лицензионный ключ повреждён");
+                    File.WriteAllLines($"{DateTime.Now}.log",Logger._logs);
                     this.Close();
                     return;
                 }
             }
         
     
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            HelpWindow hlp = new HelpWindow();
+            hlp.Show();
         }
     }
 }

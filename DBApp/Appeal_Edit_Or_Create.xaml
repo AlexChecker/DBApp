@@ -8,7 +8,7 @@
         Title="AppealDialog" Height="348" Width="300" ResizeMode="NoResize">
     <StackPanel>
         <TextBlock Name="Appeal_Number"/>
-        <TextBox MaxLength="500" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" Name="Appeal_Description" Height="250" />
+        <TextBox ToolTip="Введите описание вашего обращения" MaxLength="500" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" Name="Appeal_Description" Height="250" />
         <ComboBox Name="Departments" SelectedIndex="0" MouseEnter="Departments_OnMouseEnter"/>
         <Button Name="Accept" Height="20" Content="Применить изменения" Click="Accept_OnClick">        <Button.Style>
                 <Style TargetType="Button">

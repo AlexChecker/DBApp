@@ -9,8 +9,8 @@
     <StackPanel>
         <TextBlock Name="Appeal_Number"/>
         <TextBox Name="Appeal_Description" Height="250" IsReadOnly="True"/>
-        <ComboBox Name="Status"/>
-        <ComboBox Name="Section" MouseEnter="Section_OnMouseEnter" />
+        <ComboBox ToolTip="Выберите статус" Name="Status"/>
+        <ComboBox ToolTip="Выберите статью" Name="Section" MouseEnter="Section_OnMouseEnter" />
         <Button Name="Accept" Height="20" Content="Применить изменения" Click="Accept_OnClick"/>
     </StackPanel>
 </Window>

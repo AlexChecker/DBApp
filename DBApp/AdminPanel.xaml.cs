@@ -479,5 +479,10 @@ namespace DBApp
         }
 
 
+        private void Monitor_OnClick(object sender, RoutedEventArgs e)
+        {
+            Monitor m = new Monitor();
+            m.Show();
+        }
     }
 }

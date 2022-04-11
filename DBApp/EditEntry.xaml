@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="EditEntry" SizeToContent="Height" Width="400">
     <StackPanel>
-        <TextBox Name="Editable" Height="100" Width="400" TextWrapping="Wrap"/>
+        <TextBox ToolTip="Введите новое значение записи" Name="Editable" Height="100" Width="400" TextWrapping="Wrap"/>
         <Button Height="20" Width="400" Content="Применить" Name="Apply" Click="Apply_OnClick">        <Button.Style>
                 <Style TargetType="Button">
                     <Style.Triggers>

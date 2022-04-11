@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +42,16 @@ namespace DBApp
         {
             //string result = utils.Sample(LoginBox.Text, PasswordBox.Text);
             //MessageBox.Show(result);
-            SQL.User? user = utils.Log_In(LoginBox.Text, PasswordBox.Text);
+            SQL.User? user;
+            if (File.Exists("user.txt"))
+            {
+                string[] data = File.ReadAllLines("user.txt");
+                if(data.Length==2) user = utils.Log_In(data[0], data[1]);
+                else user = utils.Log_In(LoginBox.Text, PasswordBox.Text);
+                    
+            }
+            else
+                user = utils.Log_In(LoginBox.Text, PasswordBox.Text);
             MainInterfaceEmployee Employee_Interface = new MainInterfaceEmployee();
             MainInterfaceCitizen Citizen_Interface = new MainInterfaceCitizen();
             if (!(user is null))
@@ -74,6 +84,28 @@ namespace DBApp
 
                     if (result)
                     {
+                        var res = MessageBox.Show("Желаете ли вы сохранить ваш логин и пароль в файл?","Вопрос",MessageBoxButton.YesNo);
+                        if (res == MessageBoxResult.Yes)
+                        {
+                            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+                            dlg.FileName = "Логин и пароль"; // Default file name
+                            dlg.DefaultExt = ".txt"; // Default file extension
+                            dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
+
+// Show save file dialog box
+                            Nullable<bool> resultDialog = dlg.ShowDialog();
+                            if (result == true)
+                            {
+                                // Save document
+                                string filename = dlg.FileName;
+                                List<string> data = new List<string>();
+                                data.Add(LoginBox.Text);
+                                data.Add(PasswordBox.Text);
+                                File.WriteAllLines("user.txt",data);
+                                
+                            }
+                        }
+
                         Citizen_Interface.username_label.Content +=
                             user?.name + " " + user?.secondName + " " + user?.middleName;
                         Citizen_Interface.utils = this.utils;
@@ -81,14 +113,14 @@ namespace DBApp
                         Citizen_Interface.mw = this;
                         Citizen_Interface.Show();
                         Citizen_Interface.init();
-                        
                         this.Hide();
                     }
                 }
             }
-            else 
+            else
             {
-                MessageBox.Show("Пожалуйста, введите верные данные!");            
+                Xceed.Wpf.Toolkit.MessageBox.Show("Пожалуйса, введите верные данные");
+                //MessageBox.Show("Пожалуйста, введите верные данные!");            
             }
         }
 

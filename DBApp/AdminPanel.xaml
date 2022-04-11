@@ -40,7 +40,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Name="Filter" Height="20" Width="800" Content="Фильтры" Click="Filter_OnClick">        <Button.Style>
+        <Button ToolTip="Отфильтровать данную таблицу" Name="Filter" Height="20" Width="800" Content="Фильтры" Click="Filter_OnClick">        <Button.Style>
                 <Style TargetType="Button">
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -100,6 +100,7 @@
                 </Style>
             </Button.Style>
         </Button>
+        <Button Height="20" Name="Monitor" Content="Посмотреть данные об использованиии ресурсов системы" Click="Monitor_OnClick"/>
         <DataGrid Name="Table" MouseDoubleClick="Table_OnMouseDoubleClick" IsReadOnly="True" >
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
